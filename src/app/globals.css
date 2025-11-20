@@ -5,6 +5,15 @@
   --foreground: #171717;
 }
 
+
+.darkText{
+  color: #28343e;
+}
+
+.text{
+  color: white;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -24,3 +33,5 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
