@@ -62,7 +62,7 @@ export default function Hero() {
           <motion.div initial={{ scale: 0.98, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6 }} className="flex justify-center">
             <div className="relative w-full max-w-lg">
               <Image 
-            src={'/Preview.png'}
+            src={'/Preview.jpg'}
                 alt="TaskPilot preview"
                 className="w-full rounded-2xl shadow-2xl"
                width={500}
