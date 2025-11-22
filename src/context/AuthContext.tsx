@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const storedUser = LocalStorage.get("taskpilot-user")
     if (storedUser) {
-      setUserState(JSON.parse(storedUser));
+      setUserState(storedUser);
     }
   }, []);
 

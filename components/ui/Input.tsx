@@ -5,10 +5,10 @@ import { FieldError } from "react-hook-form";
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name: string;
-  error?: FieldError | undefined;
+  error?: FieldError | undefined | any;
 }
 
-export default function Input({ label, error, ...rest }: Props) {
+export default function Input({ label, error, className, ...rest }: Props) {
   return (
     <label className="block">
       {label && <span className="text-sm font-medium text-gray-700">{label}</span>}

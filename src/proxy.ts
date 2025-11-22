@@ -6,9 +6,12 @@ import { jwtVerify } from "jose";
 const jsonSecret = new TextEncoder().encode(process.env.ACCESS_TOKEN_SECRET);
 
 async function verifyJWT(token?: string) {
-  if (!token) return null;
+
+  
   try {
+    if (!token) return null;
     const { payload } = await jwtVerify(token, jsonSecret);
+ 
     if (!payload) return null;
     return payload;
   } catch (error) {
@@ -23,7 +26,7 @@ export async function proxy(req: NextRequest) {
   // Try to get next-auth token for o-auth user
 
   const accessToken = req.cookies.get("accessToken")?.value;
-  
+
   if(!accessToken){
     const refreshToken = req.cookies.get("refreshToken")?.value;
     
@@ -32,6 +35,7 @@ export async function proxy(req: NextRequest) {
   }
 
   const userIsAuthenticated = await verifyJWT(accessToken);
+
     
 
 
@@ -45,6 +49,8 @@ export async function proxy(req: NextRequest) {
     "/tasks",
     "/projects",
     "/notes",
+    "/users",
+    "/profile"
   ];
 
   function matchesRoute(list: string[], path: string) {
@@ -53,7 +59,6 @@ export async function proxy(req: NextRequest) {
 
   const isPublic = matchesRoute(publicRoutes, pathname);
   const isProtected = matchesRoute(protectedRoutes, pathname);
-
   if (userIsAuthenticated && isPublic) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }

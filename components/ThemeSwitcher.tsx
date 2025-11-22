@@ -15,6 +15,20 @@ const ThemeSwitcher = () => {
 
     useEffect(() => setmounted(true), [])
 
+    // Diagnostic: log where `dark` class is present and ensure it's not stuck on <body>
+    useEffect(() => {
+      if (!mounted) return
+      try {
+      
+        if(resolvedTheme === 'light') {
+          // If `dark` somehow ended up on body, remove it (next-themes manages html)
+          if (document.body.classList.contains('dark')) document.body.classList.remove('dark')
+        }
+      } catch (e) {
+        // ignore when running server-side or in restricted env
+      }
+    }, [mounted, resolvedTheme])
+
     if(!mounted) {
         return (
             <Image
@@ -28,18 +42,18 @@ const ThemeSwitcher = () => {
 
     if(resolvedTheme === 'dark'){
        return (
-    <button  onClick={() => setTheme('light')} className="w-full text-sm flex items-center gap-2 px-2 py-1">
-      <SunDim className="h-3 w-3" />
-      Light Mode
+    <button  onClick={() => setTheme('light')} className="w-full transition-all duration-200 text-sm flex items-center gap-2 px-2 py-1">
+      <SunDim className="lg:h-7 lg:w-7 w-4 h-4" />
+      
     </button>
   )
         
     }
     if(resolvedTheme === 'light'){
         return (
-    <button onClick={() => setTheme('dark')} className="w-full text-sm flex items-center gap-2 px-2 py-1">
-      <Moon className="h-3 w-3" />
-      Dark Mode
+    <button onClick={() => setTheme('dark')} className="w-full transition-all duration-200 text-sm flex items-center gap-2 px-2 py-1">
+      <Moon className="lg:h-7 lg:w-7 w-4 h-4" />
+      
     </button>
   )
     }
