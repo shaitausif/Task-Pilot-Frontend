@@ -84,9 +84,9 @@ export default function Sidebar() {
           src={'/Logo.png'} alt="TaskPilot" className="h-10 w-10 rounded-md" />
           <span className="text-lg font-semibold  text-tp-text">TaskPilot</span>
           </div>
-          <motion.span
+          {/* <motion.span
           onClick={() => setOpen((s) => !s)}
-          className="text-end mb-1 mr-1 p-1 rounded-md duration-200 hover:bg-[#28343e]"><Menu size={20}/></motion.span>
+          className="text-end mb-1 mr-1 p-1 rounded-md duration-200 hover:bg-[#28343e]"><Menu size={20}/></motion.span> */}
         </div>
         
 
