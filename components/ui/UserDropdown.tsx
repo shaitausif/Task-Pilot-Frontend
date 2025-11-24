@@ -44,8 +44,7 @@ const UserDropdown = ({user}: {user: any}) => {
               <button
                 onClick={async() => {
                   setloading(true)
-                    await LogouttheUser(router, showToast)
-                    clearUser()
+                    await LogouttheUser(router, showToast, clearUser)
                     setloading(false)
                 }}
                 disabled={loading}

@@ -131,8 +131,8 @@ export default function Sidebar() {
             <button
               onClick={async(e) => {
                 e.stopPropagation()
-                await LogouttheUser(router, showToast)
-                clearUser()
+                await LogouttheUser(router, showToast, clearUser)
+                
               }}
               className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-md bg-[#28343e]/70 hover:bg-[#28343e] text-tp-textMuted hover:text-white hover:bg-tp-bgLight/60"
               aria-label="Logout"
@@ -219,7 +219,7 @@ export default function Sidebar() {
                   <button
                     onClick={() => {
                       setOpen(false);
-                      LogouttheUser(router, showToast)
+                      LogouttheUser(router, showToast, clearUser)
                     }}
                     className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent text-tp-textMuted hover:text-white hover:bg-tp-bgLight/60"
                     aria-label="Logout"
