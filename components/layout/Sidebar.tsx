@@ -129,9 +129,9 @@ export default function Sidebar() {
               <div className="truncate text-xs text-tp-textMuted">{user?.role || "User"}</div>
             </div>
             <button
-              onClick={(e) => {
+              onClick={async(e) => {
                 e.stopPropagation()
-                LogouttheUser(router, showToast)
+                await LogouttheUser(router, showToast)
                 clearUser()
               }}
               className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-md bg-[#28343e]/70 hover:bg-[#28343e] text-tp-textMuted hover:text-white hover:bg-tp-bgLight/60"

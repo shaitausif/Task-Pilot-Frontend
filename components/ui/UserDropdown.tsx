@@ -41,8 +41,8 @@ const UserDropdown = ({user}: {user: any}) => {
               </button>
 
               <button
-                onClick={() => {
-                    LogouttheUser(router, showToast)
+                onClick={async() => {
+                    await LogouttheUser(router, showToast)
                     clearUser()
                 }}
                 className="flex w-full  items-center gap-2 px-4 py-3 text-sm text-red-500 hover:bg-[#28343e] transition"
