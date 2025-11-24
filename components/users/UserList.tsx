@@ -292,8 +292,14 @@ export default function UserList() {
             className="rounded-xl bg-tp-card p-4 shadow-sm"
           >
             <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setSelectedUser(u); setDetailsOpen(true); }}>
+              <div
+              
+              className="flex items-center gap-3 cursor-pointer" onClick={() => { setSelectedUser(u); setDetailsOpen(true); }}>
                 <img
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(`/profile/${u._id}`)
+                }}
                   src={u.avatar || "/Profile.png"}
                   alt={u.fullName || u.username}
                   className="h-12 w-12 rounded-full object-cover"
