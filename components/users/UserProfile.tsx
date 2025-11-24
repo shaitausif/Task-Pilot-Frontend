@@ -140,7 +140,6 @@ export default function UserProfile({ userId }: { userId?: string | ParamValue }
       async () => await updateUserRole(profile?._id),
       null,
       (res) => {
-        console.log(res.data)
         setProfile((p) => (p ? { ...p, role: res.data.role } : p));
         setRoleOpen(false);
         showToast("Role updated", "success");
