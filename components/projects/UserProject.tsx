@@ -71,7 +71,7 @@ export default function ProjectsPage() {
   })
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log("Hoye")
+  
     if(!selectedProject) return;
     requestHandler(
       async() => await updateProject(selectedProject?._id, data),
@@ -257,7 +257,7 @@ export default function ProjectsPage() {
         <FormWrapper
           schema={ProjectSchema}
           onSubmit={async (values) => {
-            console.log(values)
+        
             requestHandler(
               // @ts-ignore
               async () => await createProject(values),

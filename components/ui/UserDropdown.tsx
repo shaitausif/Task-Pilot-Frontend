@@ -4,7 +4,7 @@ import { useToast } from '@/context/ToastContext'
 import { LogouttheUser } from '@/lib/logout'
 import { LogOut, Settings, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 
 
 
@@ -14,6 +14,7 @@ const UserDropdown = ({user}: {user: any}) => {
 
     const { showToast } = useToast()
     const router = useRouter()
+    const [loading, setloading] = useState(false)
     const { clearUser} = useAuth()
     
 
@@ -42,9 +43,12 @@ const UserDropdown = ({user}: {user: any}) => {
 
               <button
                 onClick={async() => {
+                  setloading(true)
                     await LogouttheUser(router, showToast)
                     clearUser()
+                    setloading(false)
                 }}
+                disabled={loading}
                 className="flex w-full  items-center gap-2 px-4 py-3 text-sm text-red-500 hover:bg-[#28343e] transition"
               >
                 <LogOut size={14} /> Logout

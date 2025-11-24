@@ -140,7 +140,7 @@ const updateUserProfile = (data: any) => {
 
 
     try {
-        console.log(data, "Data")
+      
         const formData = new FormData();
         formData.append("fullName",data.fullName)
 

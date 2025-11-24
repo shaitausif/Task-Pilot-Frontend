@@ -121,7 +121,7 @@ export default function UserProfile({ userId }: { userId?: string | ParamValue }
          requestHandler(
       // @ts-ignore
       async () => await updateUserProfile(data),
-      null,
+      setLoading,
       (res) => {
         setProfile(res.data);
         setEditOpen(false);

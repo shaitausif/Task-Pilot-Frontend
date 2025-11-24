@@ -222,7 +222,7 @@ export default function UserList() {
                     className="px-4 py-3 cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation()
-                      // router.push(`/profile/${u._id}`)
+                      router.push(`/profile/${u._id}`)
                     }}
                   >
                     <div className="flex items-center gap-3">

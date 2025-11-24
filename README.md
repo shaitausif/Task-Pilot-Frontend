@@ -123,6 +123,14 @@ Every call uses:
 ```
 NEXT_PUBLIC_SERVER_URI
 ```
+
+### You can use these sample credentials for Testing(Admin Privilege)
+
+```
+Email: toseaf.s@somaiya.edu 
+Password: 12345698
+```
+
 # 🔮 Future Scope
 TaskPilot is built for long-term scalability. Planned enhancements include:
 

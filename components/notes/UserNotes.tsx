@@ -254,7 +254,7 @@ export default function NotesPage() {
           onSubmit={async (values) => {
             // convert tagsRaw (if present) to tags array
             
-            console.log(values)
+           
             requestHandler(
               // @ts-ignore
               
