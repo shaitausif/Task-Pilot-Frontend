@@ -3,14 +3,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
 
-const jsonSecret = new TextEncoder().encode(process.env.ACCESS_TOKEN_SECRET);
+export const accessTokenSecret = new TextEncoder().encode(process.env.ACCESS_TOKEN_SECRET);
 
 async function verifyJWT(token?: string) {
 
   
   try {
     if (!token) return null;
-    const { payload } = await jwtVerify(token, jsonSecret);
+    const { payload } = await jwtVerify(token, accessTokenSecret);
  
     if (!payload) return null;
     return payload;
@@ -27,17 +27,22 @@ export async function proxy(req: NextRequest) {
 
   const accessToken = req.cookies.get("accessToken")?.value;
 
-  if(!accessToken){
-    const refreshToken = req.cookies.get("refreshToken")?.value;
-    
-    
-    if(refreshToken) return NextResponse.redirect(new URL(`${process.env.NEXT_PUBLIC_SERVER_URI}/auth/refresh-tokens`))
-  }
-
   const userIsAuthenticated = await verifyJWT(accessToken);
 
+if(!userIsAuthenticated){
+    const refreshToken = req.cookies.get("refreshToken")?.value;
     
+    if(refreshToken) {
+        
+        const rewriteUrl = new URL("/api/v1/auth/refresh-tokens", req.url);
+        
+        // rewriting to API route in the Express backend
+        return NextResponse.rewrite(rewriteUrl);
+    }
+}
+  
 
+  
 
   const publicRoutes = [
     "/login",
