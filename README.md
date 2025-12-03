@@ -41,7 +41,6 @@ This frontend integrates seamlessly with the TaskPilot backend to provide a comp
 ## 🛠 Tech Stack
 
 - **Next.js 14 (App Router)**
-- **React 18**
 - **TypeScript**
 - **TailwindCSS**
 - **Zod**
@@ -81,6 +80,7 @@ ACCESS_TOKEN_SECRET=
 ```
 Do not store secrets in the frontend repo.
 These variables integrate with the backend API and token logic.
+and also here's the backend repository: https://github.com/shaitausif/Task-Pilot-Backend
 
 ▶️ Getting Started
 1. Clone & Install
